@@ -23,7 +23,9 @@ class MyAgent(SparkAgent):
         # YOUR CODE HERE
 	action.stiffness['LShoulderPitch'] = 0
 	action.speed['HeadYaw'] = 0.1
+	print(action.speed['HeadYaw'])
 	action.to_commands()
+	print(action.speed['HeadYaw'])
         return action
 
 if '__main__' == __name__:

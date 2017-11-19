@@ -41,6 +41,16 @@ class AngleInterpolationAgent(PIDAgent):
     def angle_interpolation(self, keyframes, perception):
         target_joints = {}
         # YOUR CODE HERE
+        target_joints = {k: 0 for k in keyframes.names}
+        perception.joint.t
+        #current time 
+        time = prediction.time
+
+        #get closest time in keyframes
+        #some function doing that
+
+        #interpolate Bezier curve for 4 closes points
+        
 
         return target_joints
 
