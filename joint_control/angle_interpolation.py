@@ -42,15 +42,19 @@ class AngleInterpolationAgent(PIDAgent):
         target_joints = {}
         # YOUR CODE HERE
         target_joints = {k: 0 for k in keyframes.names}
-        perception.joint.t
         #current time 
-        time = prediction.time
+        current_time = perception.time
+        #for all joints get closest timepoint in keyframes
+        closest_point = []
+        for joint, times in zip(keyframes.names, keyframes.times):
+            closest_point[joint] = times-current_time
+            closest_point[joint] = min(closest_point[joint])
 
-        #get closest time in keyframes
-        #some function doing that
+        #get second point so that current_time is in betweeen those points
 
-        #interpolate Bezier curve for 4 closes points
-        
+        #interpolate Bezier curve for 2 closes points
+        #get Handle2 from first point and Handle1 from second point as control points
+        #interpolte and return new angle
 
         return target_joints
 
