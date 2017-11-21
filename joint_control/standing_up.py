@@ -4,9 +4,11 @@
     complete the `StandingUpAgent.standing_up` function, e.g. call keyframe motion corresponds to current posture
 
 '''
-
+from os import listdir
 
 from recognize_posture import PostureRecognitionAgent
+from keyframes import leftBackToStand,leftBellyToStand
+
 
 
 class StandingUpAgent(PostureRecognitionAgent):
@@ -17,7 +19,16 @@ class StandingUpAgent(PostureRecognitionAgent):
     def standing_up(self):
         posture = self.posture
         # YOUR CODE HERE
+        ROBOT_POSE_DATA_DIR = 'robot_pose_data'
+        classes = listdir(ROBOT_POSE_DATA_DIR)
 
+        if posture == 'Back':
+            self.keyframes = leftBackToStand()
+        if posture == 'Belly':
+            self.keyframes = leftBellyToStand()
+
+
+        self.keyframes = leftBackToStand()
 
 class TestStandingUpAgent(StandingUpAgent):
     '''this agent turns off all motor to falls down in fixed cycles

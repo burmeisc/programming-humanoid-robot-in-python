@@ -55,7 +55,7 @@ class PIDController(object):
         # YOUR CODE HERE
         
         #t-1
-        self.e1 = target - sensor			
+        self.e1 = target - sensor
         #t-2
         self.e2 = self.e1
         #t-3						

@@ -32,6 +32,10 @@ class AngleInterpolationAgent(PIDAgent):
                  sync_mode=True):
         super(AngleInterpolationAgent, self).__init__(simspark_ip, simspark_port, teamname, player_id, sync_mode)
         self.keyframes = ([], [], [])
+        #save the time when angle_interpolation is first called and keyframe motion is started
+        self.kf_start_time = 0
+        #current time in keyframe movement
+        self.kf_current_time = 0
 
     def think(self, perception):
         target_joints = self.angle_interpolation(self.keyframes, perception)
@@ -41,17 +45,33 @@ class AngleInterpolationAgent(PIDAgent):
     def angle_interpolation(self, keyframes, perception):
         target_joints = {}
         # YOUR CODE HERE
+
+        names = keyframes.names
+        
+        #set keys for target_joints to joint names in keyframe (so we only calculate angles for listed joints)
         target_joints = {k: 0 for k in keyframes.names}
-        #current time 
-        current_time = perception.time
+
+        if self.kf_start_time == 0:
+            self.kf_start_time = perception.time
+
+        self.kf_current_time = perception.time - self.kf_start_time
+
+        #check somehow if time is still inside keyframe time
+
         #for all joints get closest timepoint in keyframes
-        closest_point = []
-        for joint, times in zip(keyframes.names, keyframes.times):
-            closest_point[joint] = times-current_time
-            closest_point[joint] = min(closest_point[joint])
+        closest_point = {k:0 for k in target_joints.keys()}
+        i=0
+        #iterate over rows in kf.times as one row represents one joint
+        for (joint,row) in zip(target_joints.keys(),keyframes.times[i][:]):
+            temp= [times-self.kf_current_time for times in row]
+            closest_point[joint] = min(temp)
+            i+=1
 
         #get second point so that current_time is in betweeen those points
-
+        interp_points = {k:(0,0) for k in target_joints.keys()}
+        for (key,value) in closest_point:
+            if value-self.kf_current_time <0:
+                interp_points[key] = (keyframes[])
         #interpolate Bezier curve for 2 closes points
         #get Handle2 from first point and Handle1 from second point as control points
         #interpolte and return new angle
