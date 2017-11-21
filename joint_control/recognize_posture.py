@@ -8,7 +8,7 @@
     Let the robot execute different keyframes, and recognize these postures.
 
 '''
-
+import pickle
 
 from angle_interpolation import AngleInterpolationAgent
 from keyframes import hello
@@ -30,6 +30,10 @@ class PostureRecognitionAgent(AngleInterpolationAgent):
 
     def recognize_posture(self, perception):
         posture = 'unknown'
+        self.posture_classifier = pickle.load(open(ROBOT_POSE_CLF))
+        data = list(perception.joint.values())
+        data.append(perception.imu)
+        posture = posture_classifier.predict(perception.joint)
         # YOUR CODE HERE
 
         return posture
