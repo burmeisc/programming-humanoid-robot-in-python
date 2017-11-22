@@ -35,8 +35,7 @@ class AngleInterpolationAgent(PIDAgent):
         self.keyframes = ([], [], [])
         #save the time when angle_interpolation is first called and keyframe motion is started
         self.kf_start_time = -1
-        #current time in keyframe movement
-        self.kf_current_time = 0
+
 
     def think(self, perception):
         target_joints = self.angle_interpolation(self.keyframes, perception)
@@ -46,9 +45,7 @@ class AngleInterpolationAgent(PIDAgent):
     def angle_interpolation(self, keyframes, perception):
         target_joints = {}
         # YOUR CODE HERE
-
         names = keyframes[0]
-
         #set keys for target_joints to joint names in keyframe (so we only calculate angles for listed joints)
         target_joints = {k: 0 for k in names}
 
@@ -57,94 +54,69 @@ class AngleInterpolationAgent(PIDAgent):
             self.kf_start_time = perception.time
 
         #substract the start time so our current time point is in the keyframe time
-        self.kf_current_time = perception.time - self.kf_start_time
+        kf_current_time = perception.time - self.kf_start_time
 
-        #TO DO: check somehow if time is still inside keyframe time
-
-        #for all joints get closest timepoint in keyframes
-        bezier_points = []          #each row represents one joint, saves 4 points (x,y) for interpolation
         #iterate over rows in kf.times as one row represents one joint
-        for joint,row,keys in zip(names, keyframes[1],keyframes[2]):
-            temp= [time-self.kf_current_time for time in row]
-            points = [0,0,0,0]
-            closest_point = np.min(temp)
-            index_cp = np.argmin(temp)
+        for joint,time,keys in zip(names, keyframes[1],keyframes[2]):
 
             if not joint in perception.joint:
                 break
-            #if closes point is first time point get current angles from perception
-            if index_cp == 0:
 
-                points[0] = (0.0,perception.joint[joint])
-                points[3] = (closest_point,keys[index_cp][0])
+            j = -1
+            for index, t in enumerate(time):
+                if (t> kf_current_time):
+                    j=index
+                    break
 
-                # get handles, handle2 for point 1, handle1 for point 2
-                handle1 = keys[index_cp][1]
-                dTime = - handle1[1]
-                dAngle = 0
-                points[1] = (points[0][0] + dTime, points[0][1] + dAngle)
+            if j==-1:
+                target_joints[joint]=0
+                continue
 
-                dTime = handle1[1]
-                dAngle = handle1[2]
-                points[2] = (points[3][0] + dTime, points[3][1] + dAngle)
-            elif closest_point-self.kf_current_time<0:
-                #save first point [x,y] x=cp time, y=angle
-                points[0] = (closest_point,keys[index_cp][0])
-                #save second point, x=cp time + 1, y=angle
-                points[3] = (row[index_cp+1],keys[index_cp+1][0])
-                #get handles, handle2 for point 1, handle1 for point 2
-                handle2 = keys[index_cp][2]
-                dTime = handle2[1]
-                dAngle = handle2[2]
-                points[1] = (points[0][0]+dTime,points[0][1]+dAngle)
+            endHandleDTime = keys[j][1][1]
+            endHandleDAngle = keys[j][1][2]
 
-                handle1 =keys[index_cp+1][1]
-                dTime = handle1[1]
-                dAngle = handle1[2]
-                points[2] = (points[3][0]+dTime, points[3][1]+dAngle)
-            elif closest_point-self.kf_current_time>0:
-                points[0] = (row[index_cp-1],keys[index_cp-1][0])
-                points[3] = (closest_point,keys[index_cp][0])
-                # get handles, handle2 for point 1, handle1 for point 2
-                handle2 = keys[index_cp][2]
-                dTime = handle1[1]
-                dAngle = handle1[2]
-                points[1] = (points[0][0] + dTime, points[0][1] + dAngle)
+            bezierEnd = (time[j], keys[j][0])
+            bezierEndHandle = np.add(bezierEnd, (endHandleDTime, endHandleDAngle))
 
-                handle1 = keys[index_cp + 1][1]
-                dTime = handle2[1]
-                dAngle = handle2[2]
-                points[2] = (points[3][0] + dTime, points[3][1] + dAngle)
+            if (j > 0):
+                startHandleDTime = keys[j - 1][2][1]
+                startHandleDAngle = keys[j - 1][2][2]
+                bezierStart = (time[j - 1], keys[j - 1][0])
+                bezierStartHandle = np.add(bezierStart, (startHandleDTime, startHandleDAngle))
+            else:
+                startHandleDTime = - endHandleDTime
+                startHandleDAngle = 0
+                bezierStart = (0, perception.joint[joint])
+                bezierStartHandle = np.add(bezierStart, (startHandleDTime, startHandleDAngle))
 
+            root = self.get_root(bezierStart[0],
+                                                  bezierStartHandle[0],
+                                                  bezierEndHandle[0],
+                                                  bezierEnd[0],
+                                                  kf_current_time)
 
-            bezier_points.append(points)
+            target_angle = self.eval_cubic(bezierStart[1],
+                                                           bezierStartHandle[1],
+                                                           bezierEndHandle[1],
+                                                           bezierEnd[1],
+                                                           root)
 
-            #find i with x equation
-            for (joint,row) in zip(names,bezier_points):
-                i = self.solve_cubic_x(row,self.kf_current_time)
-                target_angle = self.eval_cubic(row,i)
-                target_joints[joint] = target_angle
+            print joint + ':' + str(target_angle)
+            target_joints[joint] = target_angle
 
         return target_joints
 
     #solve cubic with x valuesfor given points in row
-    def solve_cubic_x(self,row, t):
-        x0 = row[0][0]
-        x1= row[1][0]
-        x2 = row[2][0]
-        x3 = row[3][0]
+    def get_root(self,x0,x1,x2,x3, t):
         roots = np.roots([-x0 + 3 * x1 - 3 * x2 + x3, 3 * x0 - 6 * x1 + 3 * x2, -3 * x0 + 3 * x1, x0 - t])
         r=0
         for root in roots:
-            if np.isreal(root) and 0 <= np.real(root)<=1:
-                r = root
+            if np.isreal(root) and np.real(root) >= 0 <=1:
+                r = np.real(root)
         return r
 
-    def eval_cubic(self,row,i):
-        y0 = row[0][1]
-        y1 = row[1][1]
-        y2 = row[2][1]
-        y3 = row[3][1]
+    def eval_cubic(self,y0,y1,y2,y3,i):
+
         return np.polyval([-y0+3*y1-3*y2+y3,3*y0-6*y1+3*y2,-3*y0+3*y1,y0],i)
 
 

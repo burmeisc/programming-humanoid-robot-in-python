@@ -53,17 +53,18 @@ class PIDController(object):
         @return control signal
         '''
         # YOUR CODE HERE
-        
-        #t-1
-        self.e1 = target - sensor
-        #t-2
-        self.e2 = self.e1
-        #t-3						
-        self.e3 = self.e2
-
-        self.u = self.u + (self.Kp + self.Ki*self.dt + self.Kd/self.dt)*self.e1- (self.Kp+2.0*self.Kd/self.dt)*self.e2 + (self.Kd/self.dt)*self.e3
+        y_predict = sensor + self.u *self.dt
+        self.y.append(y_predict)
+        # t-1
+        e3 = target - (sensor - self.y.popleft() + y_predict)
 
 
+        self.u = self.u + (self.Kp + self.Ki*self.dt + self.Kd/self.dt)*e3- (self.Kp+2.0*self.Kd/self.dt)*self.e2 + (self.Kd/self.dt)*self.e1
+
+        # t-2
+        self.e1 = self.e2
+        # t-1
+        self.e2 = e3
 
         return self.u
 
