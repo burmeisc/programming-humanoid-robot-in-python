@@ -19,7 +19,6 @@
     # preceding the point, the second describes the curve following the point.
 '''
 
-
 from pid import PIDAgent
 from keyframes import hello
 import numpy as np
@@ -33,9 +32,8 @@ class AngleInterpolationAgent(PIDAgent):
                  sync_mode=True):
         super(AngleInterpolationAgent, self).__init__(simspark_ip, simspark_port, teamname, player_id, sync_mode)
         self.keyframes = ([], [], [])
-        #save the time when angle_interpolation is first called and keyframe motion is started
+        # save the time when angle_interpolation is first called and keyframe motion is started
         self.kf_start_time = -1
-
 
     def think(self, perception):
         target_joints = self.angle_interpolation(self.keyframes, perception)
@@ -44,32 +42,30 @@ class AngleInterpolationAgent(PIDAgent):
 
     def angle_interpolation(self, keyframes, perception):
         target_joints = {}
-        # YOUR CODE HERE
-        names = keyframes[0]
-        #set keys for target_joints to joint names in keyframe (so we only calculate angles for listed joints)
-        target_joints = {k: 0 for k in names}
 
-        #if start time is 0 set start time for the first time.
+        # YOUR CODE HERE
+        # if start time is 0 set start time for the first time.
         if self.kf_start_time == -1:
             self.kf_start_time = perception.time
 
-        #substract the start time so our current time point is in the keyframe time
+        # substract the start time so our current time point is in the keyframe time
         kf_current_time = perception.time - self.kf_start_time
 
-        #iterate over rows in kf.times as one row represents one joint
-        for joint,time,keys in zip(names, keyframes[1],keyframes[2]):
+        names = keyframes[0]
+        # iterate over rows in kf.times as one row represents one joint
+        for joint, time, keys in zip(names, keyframes[1], keyframes[2]):
 
             if not joint in perception.joint:
                 break
 
             j = -1
             for index, t in enumerate(time):
-                if (t> kf_current_time):
-                    j=index
+                if (t > kf_current_time):
+                    j = index
                     break
 
-            if j==-1:
-                target_joints[joint]=0
+            if j == -1:
+                target_joints[joint] = 0
                 continue
 
             endHandleDTime = keys[j][1][1]
@@ -90,35 +86,34 @@ class AngleInterpolationAgent(PIDAgent):
                 bezierStartHandle = np.add(bezierStart, (startHandleDTime, startHandleDAngle))
 
             root = self.get_root(bezierStart[0],
-                                                  bezierStartHandle[0],
-                                                  bezierEndHandle[0],
-                                                  bezierEnd[0],
-                                                  kf_current_time)
+                                 bezierStartHandle[0],
+                                 bezierEndHandle[0],
+                                 bezierEnd[0],
+                                 kf_current_time)
 
             target_angle = self.eval_cubic(bezierStart[1],
-                                                           bezierStartHandle[1],
-                                                           bezierEndHandle[1],
-                                                           bezierEnd[1],
-                                                           root)
+                                           bezierStartHandle[1],
+                                           bezierEndHandle[1],
+                                           bezierEnd[1],
+                                           root)
 
-            print joint + ':' + str(target_angle)
+            #print joint + ':' + str(target_angle)
             target_joints[joint] = target_angle
 
         return target_joints
 
-    #solve cubic with x valuesfor given points in row
-    def get_root(self,x0,x1,x2,x3, t):
+    # solve cubic with x valuesfor given points in row
+    def get_root(self, x0, x1, x2, x3, t):
         roots = np.roots([-x0 + 3 * x1 - 3 * x2 + x3, 3 * x0 - 6 * x1 + 3 * x2, -3 * x0 + 3 * x1, x0 - t])
-        r=0
+        r = 0
         for root in roots:
-            if np.isreal(root) and np.real(root) >= 0 <=1:
+            if np.isreal(root) and np.real(root) >= 0 <= 1:
                 r = np.real(root)
         return r
 
-    def eval_cubic(self,y0,y1,y2,y3,i):
+    def eval_cubic(self, y0, y1, y2, y3, i):
 
-        return np.polyval([-y0+3*y1-3*y2+y3,3*y0-6*y1+3*y2,-3*y0+3*y1,y0],i)
-
+        return np.polyval([-y0 + 3 * y1 - 3 * y2 + y3, 3 * y0 - 6 * y1 + 3 * y2, -3 * y0 + 3 * y1, y0], i)
 
 
 if __name__ == '__main__':
