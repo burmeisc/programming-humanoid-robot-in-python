@@ -22,6 +22,7 @@
 
 from pid import PIDAgent
 from keyframes import hello
+import numpy as np
 
 
 class AngleInterpolationAgent(PIDAgent):
@@ -33,7 +34,7 @@ class AngleInterpolationAgent(PIDAgent):
         super(AngleInterpolationAgent, self).__init__(simspark_ip, simspark_port, teamname, player_id, sync_mode)
         self.keyframes = ([], [], [])
         #save the time when angle_interpolation is first called and keyframe motion is started
-        self.kf_start_time = 0
+        self.kf_start_time = -1
         #current time in keyframe movement
         self.kf_current_time = 0
 
@@ -46,37 +47,107 @@ class AngleInterpolationAgent(PIDAgent):
         target_joints = {}
         # YOUR CODE HERE
 
-        names = keyframes.names
-        
-        #set keys for target_joints to joint names in keyframe (so we only calculate angles for listed joints)
-        target_joints = {k: 0 for k in keyframes.names}
+        names = keyframes[0]
 
-        if self.kf_start_time == 0:
+        #set keys for target_joints to joint names in keyframe (so we only calculate angles for listed joints)
+        target_joints = {k: 0 for k in names}
+
+        #if start time is 0 set start time for the first time.
+        if self.kf_start_time == -1:
             self.kf_start_time = perception.time
 
+        #substract the start time so our current time point is in the keyframe time
         self.kf_current_time = perception.time - self.kf_start_time
 
-        #check somehow if time is still inside keyframe time
+        #TO DO: check somehow if time is still inside keyframe time
 
         #for all joints get closest timepoint in keyframes
-        closest_point = {k:0 for k in target_joints.keys()}
-        i=0
+        bezier_points = []          #each row represents one joint, saves 4 points (x,y) for interpolation
         #iterate over rows in kf.times as one row represents one joint
-        for (joint,row) in zip(target_joints.keys(),keyframes.times[i][:]):
-            temp= [times-self.kf_current_time for times in row]
-            closest_point[joint] = min(temp)
-            i+=1
+        for joint,row,keys in zip(names, keyframes[1],keyframes[2]):
+            temp= [time-self.kf_current_time for time in row]
+            points = [0,0,0,0]
+            closest_point = np.min(temp)
+            index_cp = np.argmin(temp)
 
-        #get second point so that current_time is in betweeen those points
-        interp_points = {k:(0,0) for k in target_joints.keys()}
-        for (key,value) in closest_point:
-            if value-self.kf_current_time <0:
-                interp_points[key] = (keyframes[])
-        #interpolate Bezier curve for 2 closes points
-        #get Handle2 from first point and Handle1 from second point as control points
-        #interpolte and return new angle
+            if not joint in perception.joint:
+                break
+            #if closes point is first time point get current angles from perception
+            if index_cp == 0:
+
+                points[0] = (0.0,perception.joint[joint])
+                points[3] = (closest_point,keys[index_cp][0])
+
+                # get handles, handle2 for point 1, handle1 for point 2
+                handle1 = keys[index_cp][1]
+                dTime = - handle1[1]
+                dAngle = 0
+                points[1] = (points[0][0] + dTime, points[0][1] + dAngle)
+
+                dTime = handle1[1]
+                dAngle = handle1[2]
+                points[2] = (points[3][0] + dTime, points[3][1] + dAngle)
+            elif closest_point-self.kf_current_time<0:
+                #save first point [x,y] x=cp time, y=angle
+                points[0] = (closest_point,keys[index_cp][0])
+                #save second point, x=cp time + 1, y=angle
+                points[3] = (row[index_cp+1],keys[index_cp+1][0])
+                #get handles, handle2 for point 1, handle1 for point 2
+                handle2 = keys[index_cp][2]
+                dTime = handle2[1]
+                dAngle = handle2[2]
+                points[1] = (points[0][0]+dTime,points[0][1]+dAngle)
+
+                handle1 =keys[index_cp+1][1]
+                dTime = handle1[1]
+                dAngle = handle1[2]
+                points[2] = (points[3][0]+dTime, points[3][1]+dAngle)
+            elif closest_point-self.kf_current_time>0:
+                points[0] = (row[index_cp-1],keys[index_cp-1][0])
+                points[3] = (closest_point,keys[index_cp][0])
+                # get handles, handle2 for point 1, handle1 for point 2
+                handle2 = keys[index_cp][2]
+                dTime = handle1[1]
+                dAngle = handle1[2]
+                points[1] = (points[0][0] + dTime, points[0][1] + dAngle)
+
+                handle1 = keys[index_cp + 1][1]
+                dTime = handle2[1]
+                dAngle = handle2[2]
+                points[2] = (points[3][0] + dTime, points[3][1] + dAngle)
+
+
+            bezier_points.append(points)
+
+            #find i with x equation
+            for (joint,row) in zip(names,bezier_points):
+                i = self.solve_cubic_x(row,self.kf_current_time)
+                target_angle = self.eval_cubic(row,i)
+                target_joints[joint] = target_angle
 
         return target_joints
+
+    #solve cubic with x valuesfor given points in row
+    def solve_cubic_x(self,row, t):
+        x0 = row[0][0]
+        x1= row[1][0]
+        x2 = row[2][0]
+        x3 = row[3][0]
+        roots = np.roots([-x0 + 3 * x1 - 3 * x2 + x3, 3 * x0 - 6 * x1 + 3 * x2, -3 * x0 + 3 * x1, x0 - t])
+        r=0
+        for root in roots:
+            if np.isreal(root) and 0 <= np.real(root)<=1:
+                r = root
+        return r
+
+    def eval_cubic(self,row,i):
+        y0 = row[0][1]
+        y1 = row[1][1]
+        y2 = row[2][1]
+        y3 = row[3][1]
+        return np.polyval([-y0+3*y1-3*y2+y3,3*y0-6*y1+3*y2,-3*y0+3*y1,y0],i)
+
+
 
 if __name__ == '__main__':
     agent = AngleInterpolationAgent()
