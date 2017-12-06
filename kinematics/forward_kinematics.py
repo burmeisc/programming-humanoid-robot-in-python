@@ -38,10 +38,10 @@ class ForwardKinematicsAgent(AngleInterpolationAgent):
         # chains defines the name of chain and joints of the chain
         self.chains = {'Head': ['HeadYaw', 'HeadPitch'],
                        # YOUR CODE HERE
-                       'LArm': ['LShoulderPitch', 'LShoulderRoll', 'LElbowYaw','LElbowRoll','LWristYaw'],
+                       'LArm': ['LShoulderPitch', 'LShoulderRoll', 'LElbowYaw','LElbowRoll'],
                        'LLeg': ['LHipYawPitch','LHipRoll', 'LHipPitch','LKneePitch','LAnklePitch','LAnkleRoll'],
                        'RLeg': ['RHipYawPitch','RHipRoll', 'RHipPitch','RKneePitch','RAnklePitch','RAnkleRoll'],
-                       'RArm':['RShoulderPitch', 'RShoulderRoll', 'RElbowYaw','RElbowRoll','RWristYaw']
+                       'RArm': ['RShoulderPitch', 'RShoulderRoll', 'RElbowYaw','RElbowRoll']
                        }
         #parameter for the DH-matrix [a,alpha,d,angle_offset,[dx,dy,dz]]
         self.dh_params = {'HeadYaw':[0,0,0,0,[0,0,126.5]],
@@ -55,7 +55,21 @@ class ForwardKinematicsAgent(AngleInterpolationAgent):
                           'RShoulderPitch':[0,-pi/2,0,0,[0,-98.00-15.0,100.0]],
                           'RShoulderRoll': [0, pi/2,0,pi/2,[0,0,0]],
                           'RElbowYaw':[0,pi/2,0,0,[0,0,0]],
-                          'RElbowRoll': [0,pi/2,0,0,[0,0,0]]
+                          'RElbowRoll': [0,pi/2,0,0,[0,0,0]],
+
+                          'LHipYawPitch': [0,-3*pi/4,0,-pi/2,[0,50.0,-85.0]],
+                          'LHipRoll': [0,-pi/2,0,pi/4,[0,0,0]],
+                          'LHipPitch': [0,pi/2,0,0,[0,0,0]],
+                          'LKneePitch': [-100.0,0,0,0,[0,0,0]],
+                          'LAnklePitch': [-102.9,-pi/2,0,0,[0,0,0]],
+                          'LAnkleRoll': [0,-pi/2,0,0,[0,0,0]],
+
+                          'RHipYawPitch': [0,-pi/4,0,-pi/2,[0,-50.0,-85.0]],
+                          'RHipRoll': [0,-pi/2,0,-pi/2,[0,0,0]],
+                          'RHipPitch': [0,pi/2,0,0,[0,0,0]],
+                          'RKneePitch':[-100.0,0,0,0,[0,0,0]],
+                          'RAnklePitch': [-102.9,0,0,0,[0,0,0]],
+                          'RAnkleRoll': [0,-pi/2,0,0,[0,0,0]]
 
                         }
 
@@ -108,9 +122,10 @@ class ForwardKinematicsAgent(AngleInterpolationAgent):
                 # YOUR CODE HERE
                 #T is product of transformation matrixes of all joints before
                 if not(joint_before == 0):
-                    T = self.transforms[joint_before]*Tl
+                    T = self.transforms[joint_before].dot(Tl)
                 else: T = Tl
-
+                print("Angle: {}".format(angle))
+                print("Joint{}, Transformmatrix: {}".format(joint,T))
                 self.transforms[joint] = T
 
                 joint_before = joint
