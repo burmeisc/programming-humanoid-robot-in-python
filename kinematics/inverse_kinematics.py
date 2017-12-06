@@ -8,10 +8,9 @@
     2. use the results of inverse kinematics to control NAO's legs (in InverseKinematicsAgent.set_transforms)
        and test your inverse kinematics implementation.
 '''
-
-
 from forward_kinematics import ForwardKinematicsAgent
-from numpy.matlib import identity
+from numpy.matlib import identity, transpose
+import numpy as np
 
 
 class InverseKinematicsAgent(ForwardKinematicsAgent):
@@ -25,44 +24,146 @@ class InverseKinematicsAgent(ForwardKinematicsAgent):
         '''
         joint_angles = []
         # YOUR CODE HERE
+        #change position of translation vector in matrix
+        transform[:,-1] = np.transpose(transform [-1,:])
+        transform[-1,:] = [0, 0, 0, 0]
+
         # check for endeffector
         if effector_name == 'LLeg':
-            joint_angles = self.inverse_LLeg(transform)
+            joint_values = self.inverse_LLeg(transform,joint_angles)
 
         if effector_name == 'RLeg':
-            joint_angles = self.inverse_RLeg(transform)
+            joint_values = self.inverse_RLeg(transform,joint_angles)
 
-        if effector_name =="LArm":
-            joint_angles = self.inverse_LArm(transform)
-
-        if effector_name == 'RArm':
-            joint_angles = self.inverse_RArm(transform)
-
-        if effector_name == 'Head':
-            joint_angles = self.inverse_Head(transform)
         else: print('Endeffector unkown')
 
-        return joint_angles
+        return joint_values
 
     def set_transforms(self, effector_name, transform):
         '''solve the inverse kinematics and control joints use the results
         '''
         # YOUR CODE HERE
-        self.keyframes = ([], [], [])  # the result joint angles have to fill in
+        joint_values = self.inverse_kinematics(effector_name,transform)
+        joint_angles = joint_values[0]
+        joint_names = joint_values[1]
+        time = [1]*len(joint_name)
+        angles = []
+        names = []
+        for angle, name in zip(joint_angles,joint_names):
+            angles.append(angle)
+            names.append(name)
 
-    def inverse_LLeg (self):
+        self.keyframes = (names,time, angles)  # the result joint angles have to fill in
 
-    def inverse_RLeg(self):
+    #BIIIG TO DO: acutally there are multiple solution for each joint, which should be validated through FK.
+    #for now only one (positive) solution is taken
+    def inverse_LLeg (self, transform,joint_angles):
+        tigh = 100
+        tibia = 102.9
 
-    def inverse_LArm(self):
+        joint_name = ['LKneePitch','LAnkleRoll','LAnklePitch','LHipRoll','LHipPitch','LHipYawPitch']
+        #calculate T1
+        rot_x = [[1,0,0,0],[0,np.cos(np.pi/4),-np.sin(np.pi/4),0],[0,np.sin(np.pi/4),np.cos(np.pi/4),0],[0,0,0,1]]
+        T_tilde = np.array(np.dot(rot_x,transform))
+        print(T_tilde)
+        T1 = np.invert(T_tilde)
 
-    def inverse_RArm(self):
+        #calculate knee_pitch
+        root = np.sqrt(np.square(T1[1,4])+np.square(T1[2,4])+np.square(T1[3,4]))
+        knee_pitch = np.pi-np.arccos((np.square(tigh)*np.square(tibia)-root)/2*tigh*tibia)
 
-    def inverse_Head(self,transform):
-        #target_postition = [px,py,pz]
-        target_position = transform[-1][:]
+        joint_angles[0] = knee_pitch
 
-        return joint_angles
+        #ankle roll
+        ankle_roll = np.arctan(T1[2,4]/T1[3,4])
+
+        joint_angles[1] = ankle_roll
+
+        #T2
+        rot_y= [[np.cos(-np.pi/2),0,np.sin(-np.pi/2),0],[0,1,0,0],[-np.sin(-np.pi/2),0,np.cos(-np.pi/2),0],[0,0,0,1]]
+        rot_z = [[np.cos(np.pi),-np.sin(np.pi),0,0],[np.sin(np.pi),np.cos(np.pi),0,0],[0,0,1,0],[0,0,0,1]]
+        #Tranformation matrix T(5-->6) calculated by FK
+        t_5_6 = self.local_trans("LAnkleRoll", ankle_roll)
+        temp = np.invert(np.dot(np.dot(t_5_6,rot_z),rot_y))
+        T_tilde_2 = np.dot(T_tilde,temp)
+        T2= np.invert(T_tilde_2)
+
+        #ankle pitch
+        zaehler = T2[2,4]*(tibia+tigh*np.cos(knee_pitch))+tigh*T2[1,4]*np.sin(knee_pitch)
+        nenner = np.square(tigh)*np.square(np.sin(knee_pitch)) + (tibia+tigh*np.cos(knee_pitch))
+        ankle_pitch =np.arcsin(zaehler/nenner)
+        joint_angles[2] = ankle_pitch
+
+        #T3
+        t_4_5 = self.local_trans("RAnklePitch",ankle_pitch)
+        t_3_4 = self.local_trans("RKneePitch",knee_pitch)
+        trans = np.invert(np.dot(t_3_4,t_4_5))
+        T3 = np.dot(np.invert(T2),np.invert(trans))
+
+        hip_roll = np.arccos(T3[2,3])-np.pi/4
+        joint_angles[3] = hip_roll
+
+        hip_pitch = np.arcsin(T3[2,2]/np.sin(hip_roll+np.pi/4))
+        joint_angles[4] = hip_pitch
+
+        hip_yaw_pitch = np.arccos(T3[1,3]/np.sin(hip_roll+np.pi/4))
+        joint_angles[5] = hip_yaw_pitch
+        return  joint_angles,joint_name
+
+    def inverse_RLeg(self, transform, joint_angles):
+        tigh = 100
+        tibia = 102.9
+
+        joint_name = ['RKneePitch','RAnkleRoll','RAnklePitch','RHipRoll','RHipPitch','RHipYawPitch']
+
+        # calculate T1
+        rot_x = [[1, 0, 0], [0, np.cos(np.pi / 4), -np.sin(np.pi / 4)], [0, np.sin(np.pi / 4), np.cos(np.pi / 4)]]
+        T_tilde = np.dot(rot_x, transform)
+        T1 = np.invert(T_tilde)
+
+        # calculate knee_pitch
+        root = np.sqrt(np.square(T1[1, 4]) + np.square(T1[2, 4]) + np.square(T1[3, 4]))
+        knee_pitch = np.pi - np.arccos((np.square(tigh) * np.square(tibia) - root) / 2 * tigh * tibia)
+
+        joint_angles[0] = knee_pitch
+
+        # ankle roll
+        ankle_roll = np.arctan(T1[2, 4] / T1[3, 4])
+
+        joint_angles[1] = ankle_roll
+
+        # T2
+        rot_y = [[np.cos(-np.pi / 2), 0, np.sin(-np.pi / 2)], [0, 1, 0], [-np.sin(-np.pi / 2), 0, np.cos(-np.pi / 2)]]
+        rot_z = [[np.cos(np.pi), -np.sin(np.pi), 0], [np.sin(np.pi), np.cos(np.pi), 0], [0, 0, 1]]
+        # Tranformation matrix T(5-->6) calculated by FK
+        t_5_6 = self.local_trans("RAnkleRoll", ankle_roll)
+        temp = np.invert(np.dot(np.dot(t_5_6, rot_z), rot_y))
+        T_tilde_2 = np.dot(T_tilde, temp)
+        T2 = np.invert(T_tilde_2)
+
+        # ankle pitch
+        zaehler = T2[2, 4] * (tibia + tigh * np.cos(knee_pitch)) + tigh * T2[1, 4] * np.sin(knee_pitch)
+        nenner = np.square(tigh) * np.square(np.sin(knee_pitch)) + (tibia + tigh * np.cos(knee_pitch))
+        ankle_pitch = np.arcsin(zaehler / nenner)
+        joint_angles[2] = ankle_pitch
+
+        # T3
+        t_4_5 = self.local_trans("RAnklePitch", ankle_pitch)
+        t_3_4 = self.local_trans("RKneePitch", knee_pitch)
+        trans = np.invert(np.dot(t_3_4, t_4_5))
+        T3 = np.dot(np.invert(T2), np.invert(trans))
+
+        hip_roll = np.arccos(T3[2, 3]) - np.pi / 4
+        joint_angles[3] = hip_roll
+
+        hip_pitch = np.arcsin(T3[2, 2] / np.sin(hip_roll + np.pi / 4))
+        joint_angles[4] = hip_pitch
+
+        hip_yaw_pitch = np.arccos(T3[1, 3] / np.sin(hip_roll - np.pi / 4))   #only difference to left leg
+        joint_angles[5] = hip_yaw_pitch
+
+        return joint_angles, joint_name
+
 
 if __name__ == '__main__':
     agent = InverseKinematicsAgent()
