@@ -4,6 +4,9 @@
     <list default="true" id="3b7d9248-b2b6-49c8-84a7-b5ff0f9840cc" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/kinematics/inverse_kinematics.py" afterPath="$PROJECT_DIR$/kinematics/inverse_kinematics.py" />
+      <change beforePath="$PROJECT_DIR$/kinematics/inverse_kinematics_2d_autograd.ipynb" afterPath="$PROJECT_DIR$/kinematics/inverse_kinematics_2d_autograd.ipynb" />
+      <change beforePath="$PROJECT_DIR$/kinematics/inverse_kinematics_2d_jacobian.ipynb" afterPath="$PROJECT_DIR$/kinematics/inverse_kinematics_2d_jacobian.ipynb" />
+      <change beforePath="$PROJECT_DIR$/kinematics/inverse_kinematics_2d_sympy.ipynb" afterPath="$PROJECT_DIR$/kinematics/inverse_kinematics_2d_sympy.ipynb" />
     </list>
     <ignored path="$PROJECT_DIR$/.idea/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -31,7 +34,7 @@
       <file leaf-file-name="forward_kinematics.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/kinematics/forward_kinematics.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="414">
+            <state relative-caret-position="738">
               <caret line="42" column="112" lean-forward="false" selection-start-line="41" selection-start-column="31" selection-end-line="42" selection-end-column="112" />
               <folding />
             </state>
@@ -43,16 +46,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="1026">
               <caret line="60" column="0" lean-forward="false" selection-start-line="60" selection-start-column="0" selection-end-line="60" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="spark_agent.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/software_installation/spark_agent.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4680">
-              <caret line="265" column="0" lean-forward="false" selection-start-line="265" selection-start-column="0" selection-end-line="265" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -83,8 +76,8 @@
       <file leaf-file-name="inverse_kinematics.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/kinematics/inverse_kinematics.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="603">
-              <caret line="68" column="0" lean-forward="false" selection-start-line="68" selection-start-column="0" selection-end-line="68" selection-end-column="0" />
+            <state relative-caret-position="195">
+              <caret line="76" column="0" lean-forward="true" selection-start-line="76" selection-start-column="0" selection-end-line="76" selection-end-column="0" />
               <folding>
                 <element signature="e#525#578#0" expanded="true" />
               </folding>
@@ -92,18 +85,37 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="tests (2).py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/kinematics/tests (2).py">
+      <file leaf-file-name="dense.py" pinned="false" current-in-tab="false">
+        <entry file="file:///usr/local/lib/python2.7/dist-packages/sympy/matrices/dense.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1944">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="177">
+              <caret line="470" column="0" lean-forward="false" selection-start-line="470" selection-start-column="0" selection-end-line="470" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="fk_samples.json" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/kinematics/fk_samples.json">
+      <file leaf-file-name="matrices.py" pinned="false" current-in-tab="false">
+        <entry file="file:///usr/local/lib/python2.7/dist-packages/sympy/matrices/matrices.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="185">
+              <caret line="2112" column="0" lean-forward="false" selection-start-line="2112" selection-start-column="0" selection-end-line="2112" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="inverse_kinematics_2d_sympy.ipynb" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/kinematics/inverse_kinematics_2d_sympy.ipynb">
+          <provider selected="true" editor-type-id="ipnb-editor">
+            <state>
+              <selected id="14" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="tests (2).py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/kinematics/tests (2).py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
               <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -132,6 +144,7 @@
         <option value="$PROJECT_DIR$/joint_control/learn_posture.ipynb" />
         <option value="$PROJECT_DIR$/joint_control/pid.py" />
         <option value="$PROJECT_DIR$/kinematics/forward_kinematics.py" />
+        <option value="$PROJECT_DIR$/kinematics/inverse_kinematics_2d_sympy.ipynb" />
         <option value="$PROJECT_DIR$/kinematics/inverse_kinematics.py" />
       </list>
     </option>
@@ -139,8 +152,8 @@
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="766" />
     <option name="y" value="34" />
-    <option name="width" value="892" />
-    <option name="height" value="780" />
+    <option name="width" value="282" />
+    <option name="height" value="1092" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -164,6 +177,11 @@
             <path>
               <item name="programming-humanoid-robot-in-python" type="b2602c69:ProjectViewProjectNode" />
               <item name="programming-humanoid-robot-in-python" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="programming-humanoid-robot-in-python" type="b2602c69:ProjectViewProjectNode" />
+              <item name="programming-humanoid-robot-in-python" type="462c0819:PsiDirectoryNode" />
+              <item name=".ipynb_checkpoints" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="programming-humanoid-robot-in-python" type="b2602c69:ProjectViewProjectNode" />
@@ -325,18 +343,19 @@
     </history-entry>
   </component>
   <component name="ToolWindowManager">
-    <frame x="766" y="34" width="1537" height="832" extended-state="6" />
+    <frame x="766" y="34" width="1857" height="1092" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19543974" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.6695418" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.545961" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.400818" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31954888" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31954888" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="SFDX" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -385,38 +404,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/joint_control/recognize_posture.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="630">
-          <caret line="35" column="18" lean-forward="false" selection-start-line="35" selection-start-column="18" selection-end-line="35" selection-end-column="18" />
-          <folding>
-            <element signature="e#348#361#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/introduction/get_sensor_data.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
-          <caret line="23" column="25" lean-forward="false" selection-start-line="23" selection-start-column="25" selection-end-line="23" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/software_installation/spark_agent.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2430">
-          <caret line="135" column="21" lean-forward="false" selection-start-line="135" selection-start-column="21" selection-end-line="135" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/joint_control/angle_interpolation.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="990">
-          <caret line="56" column="40" lean-forward="false" selection-start-line="56" selection-start-column="40" selection-end-line="56" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/joint_control/README.md" />
     <entry file="file://$PROJECT_DIR$/joint_control/robot_pose_data/Back">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="18">
@@ -701,6 +688,12 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/kinematics/README.md">
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
           <first_editor relative-caret-position="0">
@@ -710,16 +703,10 @@
           <second_editor />
         </state>
       </provider>
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/kinematics/tests (2).py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1944">
+        <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
@@ -727,16 +714,53 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/kinematics/forward_kinematics.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="414">
+        <state relative-caret-position="738">
           <caret line="42" column="112" lean-forward="false" selection-start-line="41" selection-start-column="31" selection-end-line="42" selection-end-column="112" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/kinematics/inverse_kinematics_2d_autograd.ipynb">
+      <provider selected="true" editor-type-id="ipnb-editor">
+        <state>
+          <selected id="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/kinematics/inverse_kinematics_2d_jacobian.ipynb">
+      <provider selected="true" editor-type-id="ipnb-editor">
+        <state>
+          <selected id="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/kinematics/inverse_kinematics_2d_sympy.ipynb">
+      <provider selected="true" editor-type-id="ipnb-editor">
+        <state>
+          <selected id="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/local/lib/python2.7/dist-packages/sympy/matrices/matrices.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="185">
+          <caret line="2112" column="0" lean-forward="false" selection-start-line="2112" selection-start-column="0" selection-end-line="2112" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/local/lib/python2.7/dist-packages/sympy/matrices/dense.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="177">
+          <caret line="470" column="0" lean-forward="false" selection-start-line="470" selection-start-column="0" selection-end-line="470" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/kinematics/inverse_kinematics.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="603">
-          <caret line="68" column="0" lean-forward="false" selection-start-line="68" selection-start-column="0" selection-end-line="68" selection-end-column="0" />
+        <state relative-caret-position="195">
+          <caret line="76" column="0" lean-forward="true" selection-start-line="76" selection-start-column="0" selection-end-line="76" selection-end-column="0" />
           <folding>
             <element signature="e#525#578#0" expanded="true" />
           </folding>
