@@ -124,8 +124,8 @@ class ForwardKinematicsAgent(AngleInterpolationAgent):
                 if not(joint_before == 0):
                     T = self.transforms[joint_before].dot(Tl)
                 else: T = Tl
-                print("Angle: {}".format(angle))
-                print("Joint{}, Transformmatrix: {}".format(joint,T))
+                #print("Angle: {}".format(angle))
+                #print("Joint{}, Transformmatrix: {}".format(joint,T))
                 self.transforms[joint] = T
 
                 joint_before = joint
