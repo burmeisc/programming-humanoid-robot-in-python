@@ -58,8 +58,10 @@ class PIDController(object):
         # t-1
         e3 = target - (sensor - self.y.popleft() + y_predict)
 
-
-        self.u = self.u + (self.Kp + self.Ki*self.dt + self.Kd/self.dt)*e3- (self.Kp+2.0*self.Kd/self.dt)*self.e2 + (self.Kd/self.dt)*self.e1
+        a = self.Kp + self.Ki*self.dt + self.Kd/self.dt
+        b = self.Kp+2.0*self.Kd/self.dt
+        c = self.Kd/self.dt
+        self.u = self.u + a*e3 - b*self.e2 + c*self.e1
 
         # t-2
         self.e1 = self.e2

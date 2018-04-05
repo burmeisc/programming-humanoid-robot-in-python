@@ -111,7 +111,8 @@ class InverseKinematicsAgent(ForwardKinematicsAgent):
         zaehler = T2[1, 3] * (tibia + tigh * cos(knee_pitch)) + (tigh * T2[0, 3] * sin(knee_pitch))
         nenner = ((tigh**2) * (sin(knee_pitch)**2)) + (tibia + tigh * cos(knee_pitch))
         x = zaehler/nenner
-        ankle_pitch = arcsin(-x)
+        x = -1*x
+        ankle_pitch = arcsin(x)
         joint_angles.append(ankle_pitch)
 
         # T3
