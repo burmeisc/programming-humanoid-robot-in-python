@@ -9610,7 +9610,6 @@
       <change afterPath="$PROJECT_DIR$/hands_on_nao/inao/inao" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/hands_on_nao/inao/inao.py" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/hands_on_nao/inao/qinao" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hands_on_nao/naoqi/naoqi-sdk-2.1.2.17-linux64.tar" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/hands_on_nao/pynaoqi/pynaoqi-python2.7-2.1.2.17-2.win32.exe" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/hands_on_nao/pynaoqi/pynaoqi-python2.7-2.1.2.17-linux32.tar.gz" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/hands_on_nao/pynaoqi/pynaoqi-python2.7-2.1.2.17-linux64.tar" afterDir="false" />
@@ -9686,6 +9685,8 @@
       <change afterPath="$PROJECT_DIR$/venv1/local/lib" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/venv1/pip-selfcheck.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/joint_control/Test stuff.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/joint_control/Test stuff.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kinematics/inverse_kinematics.py" beforeDir="false" afterPath="$PROJECT_DIR$/kinematics/inverse_kinematics.py" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.idea/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -9697,53 +9698,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="pid.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/joint_control/pid.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1080">
-              <caret line="61" selection-start-line="61" selection-end-line="61" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="angle_interpolation.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/joint_control/angle_interpolation.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2142">
-              <caret line="121" selection-start-line="121" selection-end-line="121" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="spark_agent.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/software_installation/spark_agent.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3654">
-              <caret line="208" column="38" selection-start-line="208" selection-start-column="38" selection-end-line="208" selection-end-column="38" />
-              <folding>
-                <element signature="e#72#85#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="inverse_kinematics.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/kinematics/inverse_kinematics.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="972">
-              <caret line="58" selection-start-line="58" selection-end-line="58" />
-              <folding>
-                <element signature="e#525#578#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="socket.py" pinned="false" current-in-tab="false">
-        <entry file="file:///usr/lib/python2.7/socket.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4032">
-              <caret line="227" selection-start-line="227" selection-end-line="227" />
+      <file leaf-file-name="Test stuff.ipynb" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/joint_control/Test stuff.ipynb">
+          <provider selected="true" editor-type-id="ipnb-editor">
+            <state>
+              <selected id="21" />
             </state>
           </provider>
         </entry>
@@ -9751,29 +9710,29 @@
       <file leaf-file-name="forward_kinematics.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/kinematics/forward_kinematics.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1242">
-              <caret line="70" column="20" selection-start-line="70" selection-start-column="20" selection-end-line="70" selection-end-column="20" />
+            <state relative-caret-position="828">
+              <caret line="47" column="51" selection-start-line="47" selection-start-column="51" selection-end-line="47" selection-end-column="51" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="HelloWorld.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ausprobieren/HelloWorld.py">
+      <file leaf-file-name="inverse_kinematics.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/kinematics/inverse_kinematics.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="36">
-              <caret line="2" column="21" lean-forward="true" selection-start-line="2" selection-start-column="21" selection-end-line="2" selection-end-column="21" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="listen.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/ausprobieren/listen.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="288">
-              <caret line="22" column="37" lean-forward="true" selection-start-line="22" selection-start-column="37" selection-end-line="22" selection-end-column="37" />
+            <state relative-caret-position="159">
+              <caret line="89" column="25" selection-start-line="89" selection-start-column="25" selection-end-line="89" selection-end-column="25" />
               <folding>
-                <element signature="e#90#100#0" expanded="true" />
+                <element signature="e#525#578#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="pid.py" pinned="false" current-in-tab="false">
+        <entry file="file:///media/superman/Volume/Charlotte/git/RoboCup/programming-humanoid-robot-in-python/joint_control/pid.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="508">
+              <caret line="63" selection-start-line="63" selection-end-line="63" />
             </state>
           </provider>
         </entry>
@@ -9792,6 +9751,8 @@
       <find>keyframes</find>
       <find>forward_kinematics</find>
       <find>pri</find>
+      <find>pid</find>
+      <find>control</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -9809,18 +9770,18 @@
         <option value="$PROJECT_DIR$/kinematics/forward_kinematics.py" />
         <option value="$PROJECT_DIR$/distributed_computing/agent_server.py" />
         <option value="$PROJECT_DIR$/distributed_computing/agent_client.py" />
-        <option value="$PROJECT_DIR$/kinematics/inverse_kinematics.py" />
         <option value="$PROJECT_DIR$/joint_control/pid.py" />
         <option value="$PROJECT_DIR$/ausprobieren/HelloWorld.py" />
         <option value="$PROJECT_DIR$/ausprobieren/listen.py" />
+        <option value="$PROJECT_DIR$/kinematics/inverse_kinematics.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="800" />
-    <option name="y" value="24" />
-    <option name="width" value="799" />
-    <option name="height" value="876" />
+    <option name="x" value="1942" />
+    <option name="y" value="114" />
+    <option name="width" value="793" />
+    <option name="height" value="871" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -9838,12 +9799,12 @@
             <path>
               <item name="programming-humanoid-robot-in-python" type="b2602c69:ProjectViewProjectNode" />
               <item name="programming-humanoid-robot-in-python" type="462c0819:PsiDirectoryNode" />
-              <item name="ausprobieren" type="462c0819:PsiDirectoryNode" />
+              <item name="joint_control" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="programming-humanoid-robot-in-python" type="b2602c69:ProjectViewProjectNode" />
               <item name="programming-humanoid-robot-in-python" type="462c0819:PsiDirectoryNode" />
-              <item name="distributed_computing" type="462c0819:PsiDirectoryNode" />
+              <item name="kinematics" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -9854,7 +9815,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../../ColourRobo" />
-    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -9868,7 +9829,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.HelloWorld">
+  <component name="RunManager" selected="Python.inverse_kinematics">
     <configuration name="HelloWorld" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="programming-humanoid-robot-in-python" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -9887,24 +9848,6 @@
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
     </configuration>
-    <configuration name="agent_server" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="programming-humanoid-robot-in-python" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/distributed_computing" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/distributed_computing/agent_server.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-    </configuration>
     <configuration name="angle_interpolation" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="programming-humanoid-robot-in-python" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -9918,6 +9861,24 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/joint_control/angle_interpolation.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+    </configuration>
+    <configuration name="forward_kinematics" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="programming-humanoid-robot-in-python" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/kinematics" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/kinematics/forward_kinematics.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -9961,18 +9922,18 @@
     </configuration>
     <list>
       <item itemvalue="Python.inverse_kinematics" />
-      <item itemvalue="Python.agent_server" />
       <item itemvalue="Python.angle_interpolation" />
       <item itemvalue="Python.spark_agent" />
       <item itemvalue="Python.HelloWorld" />
+      <item itemvalue="Python.forward_kinematics" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.inverse_kinematics" />
+        <item itemvalue="Python.forward_kinematics" />
         <item itemvalue="Python.HelloWorld" />
         <item itemvalue="Python.spark_agent" />
-        <item itemvalue="Python.inverse_kinematics" />
         <item itemvalue="Python.angle_interpolation" />
-        <item itemvalue="Python.agent_server" />
       </list>
     </recent_temporary>
   </component>
@@ -9994,7 +9955,14 @@
       <option name="project" value="LOCAL" />
       <updated>1522922133317</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="First steps with NAOqi API. Implemented a speech recognition event listener">
+      <created>1523008886948</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1523008886948</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -10009,18 +9977,18 @@
     </history-entry>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-1" y="23" width="1603" height="878" extended-state="6" />
+    <frame x="1598" y="-1" width="1924" height="1082" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18636648" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.15520833" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.385511" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.30501536" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Python Console" order="7" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="7" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.31688312" />
+      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.31627432" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="SFDX" order="7" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -10041,12 +10009,13 @@
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.3004566" />
       <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.2974026" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="right" id="Data View" order="3" />
       <window_info id="Structure" order="1" weight="0.25" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Version Control" order="9" />
+      <window_info anchor="bottom" id="Python Console" order="10" />
       <window_info anchor="bottom" id="Log Manager" order="13" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.03374233" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3190184" />
@@ -10054,10 +10023,9 @@
       <window_info anchor="bottom" id="Terminal" order="12" />
       <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Version Control" order="9" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Python Console" order="10" />
+      <window_info id="Favorites" order="2" side_tool="true" />
     </layout-to-restore>
   </component>
   <component name="VcsContentAnnotationSettings">
@@ -10096,8 +10064,33 @@
           <line>281</line>
           <option name="timeStamp" value="17" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file:///media/superman/Volume/Charlotte/git/RoboCup/programming-humanoid-robot-in-python/joint_control/pid.py</url>
+          <line>63</line>
+          <option name="timeStamp" value="21" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file:///media/superman/Volume/Charlotte/git/RoboCup/programming-humanoid-robot-in-python/joint_control/pid.py</url>
+          <line>62</line>
+          <option name="timeStamp" value="22" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file:///media/superman/Volume/Charlotte/git/RoboCup/programming-humanoid-robot-in-python/joint_control/pid.py</url>
+          <line>61</line>
+          <option name="timeStamp" value="23" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/kinematics/inverse_kinematics.py</url>
+          <line>115</line>
+          <option name="timeStamp" value="24" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/kinematics/inverse_kinematics.py</url>
+          <line>94</line>
+          <option name="timeStamp" value="25" />
+        </line-breakpoint>
       </breakpoints>
-      <option name="time" value="18" />
+      <option name="time" value="26" />
     </breakpoint-manager>
   </component>
   <component name="debuggerHistoryManager">
@@ -10110,20 +10103,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/kinematics/forward_kinematics.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1890">
-          <caret line="106" lean-forward="true" selection-start-line="106" selection-end-line="106" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/joint_control/pid.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="666">
-          <caret line="37" column="20" selection-start-line="37" selection-start-column="20" selection-end-line="37" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/joint_control/angle_interpolation.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2142">
@@ -10349,48 +10328,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/joint_control/angle_interpolation.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2142">
-          <caret line="121" selection-start-line="121" selection-end-line="121" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///usr/lib/python2.7/socket.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4032">
-          <caret line="227" selection-start-line="227" selection-end-line="227" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/kinematics/forward_kinematics.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="88">
           <caret line="106" lean-forward="true" selection-start-line="106" selection-end-line="106" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/kinematics/inverse_kinematics.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="972">
-          <caret line="58" selection-start-line="58" selection-end-line="58" />
-          <folding>
-            <element signature="e#525#578#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/joint_control/pid.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1080">
-          <caret line="61" selection-start-line="61" selection-end-line="61" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/kinematics/forward_kinematics.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1242">
-          <caret line="70" column="20" selection-start-line="70" selection-start-column="20" selection-end-line="70" selection-end-column="20" />
         </state>
       </provider>
     </entry>
@@ -10401,9 +10342,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/ausprobieren/HelloWorld.py" />
+    <entry file="file://$PROJECT_DIR$/ausprobieren/listen.py" />
+    <entry file="file:///usr/lib/python2.7/socket.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="685">
+          <caret line="227" selection-start-line="227" selection-end-line="227" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/software_installation/spark_agent.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3654">
+        <state relative-caret-position="685">
           <caret line="208" column="38" selection-start-line="208" selection-start-column="38" selection-end-line="208" selection-end-column="38" />
           <folding>
             <element signature="e#72#85#0" expanded="true" />
@@ -10411,19 +10361,47 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ausprobieren/HelloWorld.py">
+    <entry file="file://$PROJECT_DIR$/joint_control/angle_interpolation.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="36">
-          <caret line="2" column="21" lean-forward="true" selection-start-line="2" selection-start-column="21" selection-end-line="2" selection-end-column="21" />
+        <state relative-caret-position="685">
+          <caret line="121" selection-start-line="121" selection-end-line="121" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ausprobieren/listen.py">
+    <entry file="file://$PROJECT_DIR$/joint_control/pid.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="22" column="37" lean-forward="true" selection-start-line="22" selection-start-column="37" selection-end-line="22" selection-end-column="37" />
+        <state relative-caret-position="144">
+          <caret line="68" column="20" lean-forward="true" selection-start-line="68" selection-start-column="20" selection-end-line="68" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/joint_control/Test stuff.ipynb">
+      <provider selected="true" editor-type-id="ipnb-editor">
+        <state>
+          <selected id="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/kinematics/forward_kinematics.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="828">
+          <caret line="47" column="51" selection-start-line="47" selection-start-column="51" selection-end-line="47" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///media/superman/Volume/Charlotte/git/RoboCup/programming-humanoid-robot-in-python/joint_control/pid.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="508">
+          <caret line="63" selection-start-line="63" selection-end-line="63" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/kinematics/inverse_kinematics.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="159">
+          <caret line="89" column="25" selection-start-line="89" selection-start-column="25" selection-end-line="89" selection-end-column="25" />
           <folding>
-            <element signature="e#90#100#0" expanded="true" />
+            <element signature="e#525#578#0" expanded="true" />
           </folding>
         </state>
       </provider>

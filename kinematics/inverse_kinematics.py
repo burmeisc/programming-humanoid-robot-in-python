@@ -87,11 +87,12 @@ class InverseKinematicsAgent(ForwardKinematicsAgent):
         # calculate knee_pitch
         d = T1[0, 3]**2 + T1[1, 3]**2 + T1[2, 3]**2
         x= (tigh**2 + tibia**2 - d) / (2. * tigh * tibia)
+        #TO DO: differ between postive/negative values
         knee_pitch = pi - arccos(x)
         joint_angles.append(knee_pitch)
 
         # ankle roll
-        x=T1[0, 2] / T1[1, 2]
+        x = T1[1, 3] / T1[2, 3]
         ankle_roll = arctan(x)
 
         joint_angles.append(ankle_roll)
@@ -103,7 +104,7 @@ class InverseKinematicsAgent(ForwardKinematicsAgent):
                  [0, 0, 0, 1]]
         # Tranformation matrix T(5-->6) calculated by FK
         t_5_6 = self.local_trans("LAnkleRoll", ankle_roll)
-        temp = inv(dot(dot(t_5_6, rot_z), rot_y))
+        temp = inv(dot(t_5_6 , dot(rot_z, rot_y)))
         T_tilde_2 = dot(T_tilde, temp)
         T2 = inv(T_tilde_2)
 
